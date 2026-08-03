@@ -1,0 +1,98 @@
+/* TasksPage.css */
+
+/* Same background and font as Dashboard */
+.task-page {
+  background: linear-gradient(145deg, #0a84c6, #3ccdff);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+}
+
+/* Bubble overlay animation */
+.task-page::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 10%, transparent 10.5%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 5%, transparent 5.5%),
+                    radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.1) 7%, transparent 7.5%);
+  background-size: 120px 120px, 80px 80px, 60px 60px;
+  z-index: 1;
+  animation: bubbleFloat 20s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes bubbleFloat {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 200px -200px, 100px -100px, -100px 100px; }
+}
+
+/* Sidebar styling (if present on TasksPage) */
+.sidebar {
+  width: 280px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  padding: 1rem;
+  color: white;
+}
+
+/* Sidebar toggle button for mobile */
+.sidebar-toggle {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 3;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .main-content.shifted {
+    margin-left: 280px;
+  }
+}
+
+/* Main content */
+.main-content {
+  flex-grow: 1;
+  margin-left: 280px;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+

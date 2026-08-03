@@ -1,0 +1,254 @@
+/* Overall layout with a water-nature inspired background */
+.register-page {
+    background: linear-gradient(145deg, #0a84c6, #3ccdff); /* Deep blue to light blue gradient */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add bubble overlay effect */
+.register-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 10%, transparent 10.5%),
+                      radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 5%, transparent 5.5%),
+                      radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.1) 7%, transparent 7.5%);
+    background-size: 120px 120px, 80px 80px, 60px 60px;
+    z-index: 1;
+    animation: bubbleFloat 20s infinite linear;
+}
+
+@keyframes bubbleFloat {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 200px -200px, 100px -100px, -100px 100px; }
+}
+
+/* Card with glass-like transparency and subtle gradient */
+.card {
+    background-color: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.3);
+    padding: 3rem;
+    max-width: 450px;
+    width: 100%;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+}
+
+/* Add subtle water ripple effect to card */
+.card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    z-index: -1;
+    animation: ripple 8s infinite ease-in-out;
+}
+
+@keyframes ripple {
+    0%, 100% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1); opacity: 0.1; }
+}
+
+/* Title styling with fresh blue color */
+.title {
+    font-size: 2.8rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px rgba(0, 150, 255, 0.5);
+    position: relative;
+}
+
+/* Add wave animation to title */
+.title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: wave 3s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+}
+
+/* Subtitle with lighter color */
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+/* Form section styling with spacing */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Label styling with bright color */
+.label {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+/* Input styling with clean, water-inspired design */
+.input {
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    font-size: 1rem;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    color: #ffffff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input:focus {
+    border-color: #ffffff;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.input.error {
+    border-color: #ff5252;
+    background-color: rgba(255, 82, 82, 0.2);
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+}
+
+/* Error message styling */
+.error-message {
+    color: #ff5252;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 82, 82, 0.3);
+}
+
+/* Button styling with aqua gradient and hover effects */
+.button {
+    background: linear-gradient(135deg, #0ecffe, #07a6f1);
+    color: white;
+    padding: 1rem;
+    border-radius: 12px;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    transform: scale(0);
+    transition: transform 0.5s ease-out;
+}
+
+.button:hover::before {
+    transform: scale(1);
+}
+
+.button:disabled {
+    background: linear-gradient(135deg, #8dc5e3, #a9d4e9);
+    cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+/* Footer text styling */
+.footer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+}
+
+.footer-link {
+    color: #00e676; /* Bright green inspired by Image 3 */
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.footer-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #00e676;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #69f0ae;
+    text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
+}
+
+.footer-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
